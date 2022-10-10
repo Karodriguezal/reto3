@@ -1,7 +1,7 @@
 package com.reto.reto3.service;
 
-import com.reto.reto3.entities.product;
-import com.reto.reto3.repository.productRepository;
+import com.reto.reto3.entities.Product;
+import com.reto.reto3.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,24 +9,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class productService {
+public class ProductService {
 
     @Autowired
-    private productRepository productRepository;
+    private ProductRepository productRepository;
 
-    public List<product> getAll(){
+    public List<Product> getAll(){
         return productRepository.getAll();
     }
 
-    public Optional<product> getProduct(int id){
+    public Optional<Product> getProduct(int id){
         return productRepository.getProduct(id);
     }
 
-    public product save(product p){
+    public Product save(Product p){
         if(p.getId()==null){
             return productRepository.save(p);
         }else {
-            Optional<product> e =productRepository.getProduct(p.getId());
+            Optional<Product> e =productRepository.getProduct(p.getId());
             if (e.isPresent()){
                 return p;
             }else {
@@ -34,9 +34,9 @@ public class productService {
             }
         }
     }
-    public product update(product p){
+    public Product update(Product p){
         if(p.getId()!=null){
-            Optional<product> q =productRepository.getProduct(p.getId());
+            Optional<Product> q =productRepository.getProduct(p.getId());
             if (q.isPresent()){
                 if (p.getName()!=null){
                     q.get().setName(p.getName());
@@ -58,7 +58,7 @@ public class productService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<product>p=productRepository.getProduct(id);
+        Optional<Product>p=productRepository.getProduct(id);
         if(p.isPresent()){
             productRepository.delete(p.get());
             flag=true;

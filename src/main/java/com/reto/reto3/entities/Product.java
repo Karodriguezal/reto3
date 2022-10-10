@@ -1,14 +1,14 @@
 package com.reto.reto3.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import jdk.jfr.Category;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "product")
-public class product implements Serializable {
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

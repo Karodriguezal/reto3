@@ -1,7 +1,7 @@
 package com.reto.reto3.controller;
 
-import com.reto.reto3.entities.product;
-import com.reto.reto3.service.productService;
+import com.reto.reto3.entities.Product;
+import com.reto.reto3.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,18 +9,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/product")
-public class productController {
+public class ProductController {
 
     @Autowired
-    private productService productService;
+    private ProductService productService;
 
     @GetMapping("/all")
-    public List<product> getAll(){
+    public List<Product> getAll(){
         return productService.getAll();
     }
 
     @PostMapping("/save")
-    public product save(@RequestBody product p){
+    public Product save(@RequestBody Product p){
         return productService.save(p);
     }
 }
