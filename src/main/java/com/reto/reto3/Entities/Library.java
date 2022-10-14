@@ -15,6 +15,7 @@ public class Library implements Serializable {
     private Integer id;
     private String name;
     private String target;
+    private Integer capacity;
     private String description;
     private String messages;
     private String reservations;
@@ -55,6 +56,10 @@ public class Library implements Serializable {
     public void setTarget(String target) {
         this.target = target;
     }
+
+    public Integer getCapacity() { return capacity; }
+
+    public void setCapacity(Integer capacity) { this.capacity = capacity; }
 
     public String getDescription() {
         return description;
