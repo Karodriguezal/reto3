@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Message")
+@Table(name = "message")
 public class Message implements Serializable {
 
     @Id
@@ -15,14 +15,14 @@ public class Message implements Serializable {
     private String messageText;
 
     @ManyToOne
-    @JoinColumn(name = "LibraryId")
-    @JsonIgnoreProperties({"Messages, Reservations"})
-    private Library Library;
+    @JoinColumn(name = "library_id")
+    @JsonIgnoreProperties({"messages, reservations"})
+    private Library lib;
 
     @ManyToOne
-    @JoinColumn(name = "ClientId")
-    @JsonIgnoreProperties({"Messages","Reservations"})
-    private Client Client;
+    @JoinColumn(name = "client_id")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Client idClient;
 
     public Integer getIdMessage() {
         return idMessage;
@@ -40,19 +40,19 @@ public class Message implements Serializable {
         this.messageText = messageText;
     }
 
-    public com.reto.reto3.Entities.Library getLibrary() {
-        return Library;
+    public com.reto.reto3.Entities.Library getLib() {
+        return lib;
     }
 
-    public void setLibrary(com.reto.reto3.Entities.Library library) {
-        Library = library;
+    public void setLib(com.reto.reto3.Entities.Library lib) {
+        this.lib = lib;
     }
 
-    public com.reto.reto3.Entities.Client getClient() {
-        return Client;
+    public Client getIdClient() {
+        return idClient;
     }
 
-    public void setClient(com.reto.reto3.Entities.Client client) {
-        Client = client;
+    public void setIdClient(Client idClient) {
+        this.idClient = idClient;
     }
 }

@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "Category")
+@Table(name = "category")
 public class Category implements Serializable {
 
     @Id
@@ -18,9 +18,9 @@ public class Category implements Serializable {
     private String category;
 
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Category")
-    @JsonIgnoreProperties("Category")
-    private List<Library> Libraries;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "category")
+    @JsonIgnoreProperties("category")
+    private List<Library> libraries;
 
     public Integer getId() {
         return id;
@@ -55,11 +55,11 @@ public class Category implements Serializable {
     }
 
     public List<Library> getLibraries() {
-        return Libraries;
+        return libraries;
     }
 
     public void setLibraries(List<Library> libraries) {
-        Libraries = libraries;
+        this.libraries = libraries;
     }
 }
 

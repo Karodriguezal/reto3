@@ -11,17 +11,17 @@ import java.util.Optional;
 @Repository
 public class LibraryRepository {
     @Autowired
-    private LibraryCrudRepository LibraryRepository;
+    private LibraryCrudRepository libraryRepository;
 
     public List<Library> getAll(){
-        return (List<Library>) LibraryRepository.findAll();
+        return (List<Library>) libraryRepository.findAll();
     }
     public Optional<Library> getLibrary(int id){
-        return LibraryRepository.findById(id);
+        return libraryRepository.findById(id);
     }
     public Library save(Library l){
-        return LibraryRepository.save(l);
+        return libraryRepository.save(l);
     }
-    public void delete(Library l){ LibraryRepository.delete(l);
+    public void delete(Library l){ libraryRepository.delete(l);
     }
 }

@@ -7,26 +7,26 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "Client")
+@Table(name = "client")
 public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_client")
     private Integer idClient;
     private String name;
     private Integer age;
     private String password;
     private String email;
-    private String messages;
-    private String reservations;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy ="Client")
-    @JsonIgnoreProperties("Client")
-    public List<Reservation> Reservations;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy ="Client")
-    @JsonIgnoreProperties("Client")
-    public List<Message> Messages;
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy ="idClient")
+    @JsonIgnoreProperties("client")
+    public List<Reservation> reservations;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "idClient")
+    @JsonIgnoreProperties("client")
+    public List<Message> messages;
 
     public Integer getIdClient() {
         return idClient;
@@ -68,35 +68,20 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public String getMessage() {
-        return messages;
-    }
 
-    public void setMessage(String message) {
-        this.messages = message;
-    }
-
-    public String getReservation() {
+    public List<Reservation> getReservations() {
         return reservations;
     }
 
-    public void setReservation(String reservation) {
-        this.reservations = reservation;
-    }
-
-    public List<Reservation> getReservations() {
-        return Reservations;
-    }
-
     public void setReservations(List<Reservation> reservations) {
-        Reservations = reservations;
+        this.reservations = reservations;
     }
 
     public List<Message> getMessages() {
-        return Messages;
+        return messages;
     }
 
     public void setMessages(List<Message> messages) {
-        Messages = messages;
+        this.messages = messages;
     }
 }

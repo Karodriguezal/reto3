@@ -1,9 +1,7 @@
 package com.reto.reto3.Service;
 
 import com.reto.reto3.Entities.Admin;
-import com.reto.reto3.Entities.Category;
 import com.reto.reto3.Repository.AdminRepository;
-import com.reto.reto3.Repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,32 +11,33 @@ import java.util.Optional;
 @Service
 public class AdminService {
 
+
     @Autowired
-    private AdminRepository AdminRepository;
+    private  AdminRepository adminRepository;
 
     public List<Admin> getAll(){
-        return AdminRepository.getAll();
+        return adminRepository.getAll();
     }
 
     public Optional<Admin> getAdmin(int id){
-        return AdminRepository.getAdmin(id);
+        return adminRepository.getAdmin(id);
     }
 
     public Admin save(Admin a){
         if(a.getIdAdmin()==null){
-            return AdminRepository.save(a);
+            return adminRepository.save(a);
         }else {
-            Optional<Admin> e = AdminRepository.getAdmin(a.getIdAdmin());
+            Optional<Admin> e = adminRepository.getAdmin(a.getIdAdmin());
             if (e.isPresent()){
                 return a;
             }else {
-                return AdminRepository.save(a);
+                return adminRepository.save(a);
             }
         }
     }
     public Admin update(Admin a){
         if(a.getIdAdmin()!=null){
-            Optional<Admin> q = AdminRepository.getAdmin(a.getIdAdmin());
+            Optional<Admin> q = adminRepository.getAdmin(a.getIdAdmin());
             if (q.isPresent()){
                 if (a.getName()!=null){
                     q.get().setName(a.getName());
@@ -49,7 +48,7 @@ public class AdminService {
                 if(a.getPassword()!=null){
                     q.get().setPassword(a.getPassword());
                 }
-                AdminRepository.save(q.get());
+                adminRepository.save(q.get());
                 return q.get();
             }else {
                 return a;
@@ -60,9 +59,9 @@ public class AdminService {
     }
     public boolean delete(int id){
         boolean flag=false;
-        Optional<Admin> p= AdminRepository.getAdmin(id);
+        Optional<Admin> p= adminRepository.getAdmin(id);
         if(p.isPresent()){
-            AdminRepository.delete(p.get());
+            adminRepository.delete(p.get());
             flag=true;
         }
         return flag;

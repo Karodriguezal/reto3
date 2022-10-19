@@ -12,16 +12,16 @@ import java.util.Optional;
 @Repository
 public class ReservationRepository {
     @Autowired
-    private static ReservationCrudRepository ReservationCrudRepository;
+    private ReservationCrudRepository reservationCrudRepository;
 
-    public List<Reservation> getAll(){ return (List<Reservation>) ReservationCrudRepository.findAll(); }
-    public static Optional<Reservation> getReservation(int id){
-        return ReservationCrudRepository.findById(id);
+    public List<Reservation> getAll(){ return (List<Reservation>) reservationCrudRepository.findAll(); }
+    public Optional<Reservation> getReservation(int id){
+        return reservationCrudRepository.findById(id);
     }
-    public static Reservation save(Reservation r){
-        return ReservationCrudRepository.save(r);
+    public Reservation save(Reservation r){
+        return reservationCrudRepository.save(r);
     }
     public void delete(Reservation r){
-        ReservationCrudRepository.delete(r);
+        reservationCrudRepository.delete(r);
     }
 }

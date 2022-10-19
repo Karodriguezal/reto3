@@ -13,15 +13,15 @@ import java.util.List;
 public class AdminController {
 
     @Autowired
-    private AdminService AdminService;
+    private AdminService adminService;
 
     @GetMapping("/all")
     public List<Admin> getAll(){
-        return AdminService.getAll();
+        return adminService.getAll();
     }
 
     @PostMapping("/save")
     public Admin save(@RequestBody Admin a){
-        return AdminService.save(a);
+        return adminService.save(a);
     }
 }

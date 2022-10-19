@@ -11,18 +11,18 @@ import java.util.Optional;
 @Repository
 public class CategoryRepository {
     @Autowired
-    private static CategoryCrudRepository CategoryRepository;
+    private CategoryCrudRepository categoryRepository;
 
     public List<Category> getAll(){
-        return (List<Category>) CategoryRepository.findAll();
+        return (List<Category>) categoryRepository.findAll();
     }
-    public static Optional<Category> getCategory(int id){
-        return CategoryRepository.findById(id);
+    public Optional<Category> getCategory(int id){
+        return categoryRepository.findById(id);
     }
-    public static Category save(Category c){
-        return CategoryRepository.save(c);
+    public Category save(Category c){
+        return categoryRepository.save(c);
     }
     public void delete(Category c){
-        CategoryRepository.delete(c);
+        categoryRepository.delete(c);
     }
 }

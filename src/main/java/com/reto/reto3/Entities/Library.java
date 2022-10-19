@@ -7,11 +7,12 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "Library")
+@Table(name = "library")
 public class Library implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
     private String name;
     private String target;
@@ -21,16 +22,16 @@ public class Library implements Serializable {
     private String reservations;
 
     @ManyToOne
-    @JoinColumn(name ="CategoryId")
-    @JsonIgnoreProperties("Libraries")
-    private Category Category;
+    @JoinColumn(name ="category_id")
+    @JsonIgnoreProperties("libraries")
+    private Category category;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Library")
-    @JsonIgnoreProperties({"Library","Messages"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "lib")
+    @JsonIgnoreProperties({"lib","client"})
     public List<Reservation> Reservations;
 
-    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "Library")
-    @JsonIgnoreProperties({"Library","Client"})
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "lib")
+    @JsonIgnoreProperties({"lib","client"})
     public List<Message> Messages;
 
     public Integer getId() {
@@ -93,11 +94,11 @@ public class Library implements Serializable {
         this.reservations = reservations;
     }
 
-    public com.reto.reto3.Entities.Category getCategory() {
-        return Category;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategory(com.reto.reto3.Entities.Category category) {
-        Category = category;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

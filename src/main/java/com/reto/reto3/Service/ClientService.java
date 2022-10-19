@@ -12,9 +12,9 @@ import java.util.Optional;
 public class ClientService {
 
     @Autowired
-    private static ClientRepository clientRepository;
+    private  ClientRepository clientRepository;
 
-    public static List<Client> getAll(){
+    public  List<Client> getAll(){
         return clientRepository.getAll();
     }
 

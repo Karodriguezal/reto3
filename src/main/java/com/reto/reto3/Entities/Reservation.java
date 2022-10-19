@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "Reservation")
+@Table(name = "reservation")
 public class Reservation implements Serializable {
 
     @Id
@@ -18,17 +18,17 @@ public class Reservation implements Serializable {
     private String status = "created";
 
     @ManyToOne
-    @JoinColumn(name = "LibraryId")
-    @JsonIgnoreProperties("Reservations")
-    private Library Library;
+    @JoinColumn(name = "library_id")
+    @JsonIgnoreProperties("reservations")
+    private Library lib;
 
     @ManyToOne
-    @JoinColumn(name = "ClientId")
-    @JsonIgnoreProperties({"Reservations","Messages"})
-    private Client Client;
+    @JoinColumn(name = "client_id")
+    @JsonIgnoreProperties({"reservations","messages"})
+    private Client idClient;
 
     @OneToOne
-    @JsonIgnoreProperties("Reservation")
+    @JsonIgnoreProperties("reservation")
     private Score Score;
 
     public Integer getIdReservation() {
@@ -63,20 +63,20 @@ public class Reservation implements Serializable {
         this.status = status;
     }
 
-    public com.reto.reto3.Entities.Library getLibrary() {
-        return Library;
+    public Library getLib() {
+        return lib;
     }
 
-    public void setLibrary(com.reto.reto3.Entities.Library library) {
-        Library = library;
+    public void setLib(Library lib) {
+        this.lib = lib;
     }
 
-    public com.reto.reto3.Entities.Client getClient() {
-        return Client;
+    public Client getIdClient() {
+        return idClient;
     }
 
-    public void setClient(com.reto.reto3.Entities.Client client) {
-        Client = client;
+    public void setIdClient(Client idClient) {
+        this.idClient = idClient;
     }
 
     public com.reto.reto3.Entities.Score getScore() {

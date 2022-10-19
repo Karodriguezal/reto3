@@ -12,15 +12,15 @@ import java.util.List;
 public class ClientController {
 
     @Autowired
-    private ClientService ClientService;
+    private ClientService clientService;
 
     @GetMapping("/all")
     public List<Client> getAll(){
-        return ClientService.getAll();
+        return clientService.getAll();
     }
 
     @PostMapping("/save")
     public Client save(@RequestBody Client cl){
-        return ClientService.save(cl);
+        return clientService.save(cl);
     }
 }

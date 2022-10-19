@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Score")
+@Table(name = "score")
 public class Score implements Serializable {
 
     @Id
@@ -16,7 +16,7 @@ public class Score implements Serializable {
     private String stars;
 
     @OneToOne
-    @JsonIgnoreProperties("Score")
+    @JsonIgnoreProperties("score")
     private Reservation Reservation;
 
     public Integer getIdScore() {

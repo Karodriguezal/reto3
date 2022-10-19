@@ -12,15 +12,15 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    private CategoryService CategoryService;
+    private CategoryService categoryService;
 
     @GetMapping("/all")
     public List<Category> getAll(){
-        return CategoryService.getAll();
+        return categoryService.getAll();
     }
 
     @PostMapping("/save")
     public Category save(@RequestBody Category c){
-        return CategoryService.save(c);
+        return categoryService.save(c);
     }
 }
